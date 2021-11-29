@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/f1e3af0b75.js"
+      crossorigin="anonymous"
+    ></script>
+       
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="./assests/style_2.css" />
+  </head>
+  <body>
+    <!--Header-->
+    <header>
+      <img src="./assests/images/Roots_logo.png" alt="" />
+      <h1>
+        Project name:
+        <script>
+          document.write(name);
+        </script>
+      </h1>
+      <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="layout.html">page2</a></li>
+          <li class="breadcrumb-item"><a href="layout1.html">page3</a></li>
+          <li class="breadcrumb-item" aria-current="page">
+            <a style="color: rgb(54, 18, 18)"> page4 </a>
+          </li>
+        </ul>
+      </nav>
+      <img
+        src="./assests/images/syona_logo.png"
+        style="width: 200px; height: 90px"
+        alt=""
+      />
+    </header>
+
+    <div class="flex-container">
+      <!---Menu-->
+      <section class="menu">
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0; background-color: tomato"
+          href="#layout" id="showlayout"
+          onclick="Calculate()"
+          >Show-layout</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0; background-color: tomato"
+          href="#layout"
+          onclick="window.location.reload()"
+          >Reload</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0; background-color: tomato"
+          href="#layout"
+          onclick="window.print()"
+          >Print</a
+        >
+
+        <br />
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0"
+          href="#layout"
+          onclick="rotate()"
+          >flex-end(V)</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0"
+          href="#layout"
+          onclick="initial()"
+          >flex-start(V)</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0"
+          href="#layout"
+          onclick="row_1()"
+          >Row</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0"
+          href="#layout"
+          onclick="rowReverse()"
+          >Row-Reverse</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0"
+          href="#layout"
+          onclick="column()"
+          >Column</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0"
+          href="#layout"
+          onclick="columnReverse()"
+          >Column-Reverse</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0"
+          href="#layout"
+          onclick="initial_1()"
+          >flex-start(H)</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0"
+          href="#layout"
+          onclick="rotate_1()"
+          >flex-end(H)</a
+        ><br />
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0; background-color:rgb(255, 111, 0)"
+          href="#layout"
+          onclick="v_start()"
+          >flex-start(V)</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0; background-color:rgb(255, 111, 0)"
+          href="#layout"
+          onclick="v_center()"
+          >center(V)</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0; background-color:rgb(255, 111, 0)"
+          href="#layout"
+          onclick="v_end()"
+          >flex-end(V)</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0; background-color:rgb(255, 111, 0)"
+          href="#layout"
+          onclick="h_start()"
+          >flex-start(H)</a
+        >
+        <a
+          class="btn"
+          type="button"
+          style="margin: 0 0 10px 0; background-color:rgb(255, 111, 0)"
+          href="#layout"
+          onclick="h_center()"
+          >center(H)</a
+        >
+        <a
+          class="btn"
+          style="margin: 0 0 10px 0; background-color:rgb(255, 111, 0)"
+          type="button"
+          href="#layout"
+          onclick="h_end()"
+          >flex-end(H)</a
+        >
+      </section>
+      <!---Content--->
+      <section class="content" >
+        <div class="container">
+          <div class="area" id="area">
+            <div id="layout">
+  
+              <div id="p_1" class="p">JJGC2st</div>
+ <div id="p_2" class="p">JGC2s</div>
+ <div id="p_3" class="p">Pluto</div>
+ <div id="p_4" class="p">JGC3s</div>
+ <div id="p_5" class="p">T S/R</div>
+ <div id="p_6" class="p">VE</div>
+ <div id="p_7" class="p">VGC3s</div>
+ <div id="p_8" class="p">Vpride</div>
+ <div id="p_9" class="p">Vprime</div>
+ <div id="p_10" class="p">Vwp1</div>
+ <div id="p_11" class="p">Vwp2</div>
+      
+          </div>
+        </div>
+      </section>
+
+      <!---Menu-->
+      
+    </div>
+
+<section id="container_1">
+  <div id="content" class="container">
+  
+  </div>
+  <div class="container" 
+  style="background-image: url('./assests/images/undraw_my_answer_re_k4dv.svg')";
+  >
+    <label>Quantity:</label>
+    <h1 id="t_6"></h1>
+    <label>Length of Layout:
+    
+    <h1 id="t_1"></h1>
+    
+    </label>
+    <label>Width of Layout:
+      <h1 id="t_2"></h1>
+    
+    </label>
+    
+    <label>Length of Row:
+      <h1 id="t_3"></h1>
+    
+    </label>
+    
+    <label>Length of Column:
+      <h1 id="t_4"></h1>
+    
+    </label>
+    
+    <label>Project Name:
+      <h1 id="t_5">:</h1>
+    
+    </label>
+    
+    
+    </div>
+</section>
+
+
+    <!----Footer-->
+    <footer class="footer">
+      Copyrighted <i class="fas fa-copyright"></i>2021 Roots Group Of Companies.
+      All Rights Reserved<br />
+      Follows us:<i class="fab fa-facebook"></i><i class="fab fa-twitter"></i
+      ><i class="far fa-envelope"></i><i class="fab fa-linkedin-in"></i>
+    </footer>
+    <!---script-->
+ 
+    <script>
+      var length = localStorage.getItem('length');
+      var breath = localStorage.getItem('breath');
+      var name = localStorage.getItem('name');
+      var Row = localStorage.getItem('row');
+      var column = localStorage.getItem('column');
+      let quant = localStorage.getItem('quant');
+      let id = localStorage.getItem('id');
+
+
+      var len, bth, row, col;
+      var feet = 152;
+      len = length * feet + 'px';
+      bth = breath * feet + 'px';
+      row = Row * feet + 'px';
+      col = column * feet + 'px';
+      function Calculate() {
+        document.getElementById('layout').style.height = col;
+        document.getElementById('layout').style.width = row;
+        document.getElementById('area').style.height = len;
+        document.getElementById('area').style.width = bth;
+
+    
+
+      }
+    </script>
+      <script>
+        document.getElementById('t_1').innerHTML = length;
+        document.getElementById('t_2').innerHTML = breath;
+        document.getElementById('t_3').innerHTML = Row;
+        document.getElementById('t_4').innerHTML = column;
+        document.getElementById('t_5').innerHTML = name;
+        document.getElementById('t_6').innerHTML= quant;
+      </script>
+    <script>
+      let quan = parseInt(quant);
+      console.log(quan)
+      if (id == "p_1"){
+        for (let i=0;i<quan;i++){
+          var p = document.getElementById("p_1");
+         var l = document.getElementById("layout")
+                   var cln =  p.cloneNode(true);
+                   document.getElementById('layout').appendChild(cln); 
+        }
+        var p = document.getElementById("p_2");
+        p.remove();
+        var p = document.getElementById("p_3");
+        p.remove();
+        var p = document.getElementById("p_4");
+        p.remove();
+
+        var p = document.getElementById("p_5");
+        p.remove();
+
+        var p = document.getElementById("p_6");
+        p.remove();
+
+        var p = document.getElementById("p_7");
+        p.remove();
+
+        var p = document.getElementById("p_8");
+        p.remove();
+
+        var p = document.getElementById("p_9");
+        p.remove();
+        
+        var p = document.getElementById("p_10");
+        p.remove();
+        
+        var p = document.getElementById("p_11");
+        p.remove();
+
+         
+        for(let j=0; j<quan;j++){
+          document.getElementById("layout").children[j].style.display="flex";
+        }
+        
+      }
+      if (id == "p_2"){
+        for (let i=0;i<quan;i++){
+          var p = document.getElementById("p_2");
+         var l = document.getElementById("layout")
+                   var cln =  p.cloneNode(true);
+                   document.getElementById('layout').appendChild(cln); 
+        }
+        var p = document.getElementById("p_1");
+        p.remove();
+        var p = document.getElementById("p_3");
+        p.remove();
+        var p = document.getElementById("p_4");
+        p.remove();
+
+        var p = document.getElementById("p_5");
+        p.remove();
+
+        var p = document.getElementById("p_6");
+        p.remove();
+
+        var p = document.getElementById("p_7");
+        p.remove();
+
+        var p = document.getElementById("p_8");
+        p.remove();
+
+        var p = document.getElementById("p_9");
+        p.remove();
+        
+        var p = document.getElementById("p_10");
+        p.remove();
+        
+        var p = document.getElementById("p_11");
+        p.remove();
+
+         
+        for(let j=0; j<quan;j++){
+          document.getElementById("layout").children[j].style.display="flex";
+        }
+        
+      }
+      if (id == "p_3"){
+        for (let i=0;i<quan;i++){
+          var p = document.getElementById("p_3");
+         var l = document.getElementById("layout")
+                   var cln =  p.cloneNode(true);
+                   document.getElementById('layout').appendChild(cln); 
+        }
+        var p = document.getElementById("p_2");
+        p.remove();
+        var p = document.getElementById("p_1");
+        p.remove();
+        var p = document.getElementById("p_4");
+        p.remove();
+
+        var p = document.getElementById("p_5");
+        p.remove();
+
+        var p = document.getElementById("p_6");
+        p.remove();
+
+        var p = document.getElementById("p_7");
+        p.remove();
+
+        var p = document.getElementById("p_8");
+        p.remove();
+
+        var p = document.getElementById("p_9");
+        p.remove();
+        
+        var p = document.getElementById("p_10");
+        p.remove();
+        
+        var p = document.getElementById("p_11");
+        p.remove();
+
+         
+        for(let j=0; j<quan;j++){
+          document.getElementById("layout").children[j].style.display="flex";
+        }
+        
+      }
+      if (id == "p_4"){
+        for (let i=0;i<quan;i++){
+          var p = document.getElementById("p_4");
+         var l = document.getElementById("layout")
+                   var cln =  p.cloneNode(true);
+                   document.getElementById('layout').appendChild(cln); 
+        }
+        var p = document.getElementById("p_2");
+        p.remove();
+        var p = document.getElementById("p_3");
+        p.remove();
+        var p = document.getElementById("p_1");
+        p.remove();
+
+        var p = document.getElementById("p_5");
+        p.remove();
+
+        var p = document.getElementById("p_6");
+        p.remove();
+
+        var p = document.getElementById("p_7");
+        p.remove();
+
+        var p = document.getElementById("p_8");
+        p.remove();
+
+        var p = document.getElementById("p_9");
+        p.remove();
+        
+        var p = document.getElementById("p_10");
+        p.remove();
+        
+        var p = document.getElementById("p_11");
+        p.remove();
+
+         
+        for(let j=0; j<quan;j++){
+          document.getElementById("layout").children[j].style.display="flex";
+        }
+        
+      }
+      if (id == "p_5"){
+        for (let i=0;i<quan;i++){
+          var p = document.getElementById("p_5");
+         var l = document.getElementById("layout")
+                   var cln =  p.cloneNode(true);
+                   document.getElementById('layout').appendChild(cln); 
+        }
+        var p = document.getElementById("p_2");
+        p.remove();
+        var p = document.getElementById("p_3");
+        p.remove();
+        var p = document.getElementById("p_4");
+        p.remove();
+
+        var p = document.getElementById("p_1");
+        p.remove();
+
+        var p = document.getElementById("p_6");
+        p.remove();
+
+        var p = document.getElementById("p_7");
+        p.remove();
+
+        var p = document.getElementById("p_8");
+        p.remove();
+
+        var p = document.getElementById("p_9");
+        p.remove();
+        
+        var p = document.getElementById("p_10");
+        p.remove();
+        
+        var p = document.getElementById("p_11");
+        p.remove();
+
+         
+        for(let j=0; j<quan;j++){
+          document.getElementById("layout").children[j].style.display="flex";
+        }
+        
+      }
+      if (id == "p_6"){
+        for (let i=0;i<quan;i++){
+          var p = document.getElementById("p_6");
+         var l = document.getElementById("layout")
+                   var cln =  p.cloneNode(true);
+                   document.getElementById('layout').appendChild(cln); 
+        }
+        var p = document.getElementById("p_2");
+        p.remove();
+        var p = document.getElementById("p_3");
+        p.remove();
+        var p = document.getElementById("p_4");
+        p.remove();
+
+        var p = document.getElementById("p_5");
+        p.remove();
+
+        var p = document.getElementById("p_1");
+        p.remove();
+
+        var p = document.getElementById("p_7");
+        p.remove();
+
+        var p = document.getElementById("p_8");
+        p.remove();
+
+        var p = document.getElementById("p_9");
+        p.remove();
+        
+        var p = document.getElementById("p_10");
+        p.remove();
+        
+        var p = document.getElementById("p_11");
+        p.remove();
+
+         
+        for(let j=0; j<quan;j++){
+          document.getElementById("layout").children[j].style.display="flex";
+        }
+        
+      }
+      if (id == "p_7"){
+        for (let i=0;i<quan;i++){
+          var p = document.getElementById("p_7");
+         var l = document.getElementById("layout")
+                   var cln =  p.cloneNode(true);
+                   document.getElementById('layout').appendChild(cln); 
+        }
+        var p = document.getElementById("p_2");
+        p.remove();
+        var p = document.getElementById("p_3");
+        p.remove();
+        var p = document.getElementById("p_4");
+        p.remove();
+
+        var p = document.getElementById("p_5");
+        p.remove();
+
+        var p = document.getElementById("p_6");
+        p.remove();
+
+        var p = document.getElementById("p_1");
+        p.remove();
+
+        var p = document.getElementById("p_8");
+        p.remove();
+
+        var p = document.getElementById("p_9");
+        p.remove();
+        
+        var p = document.getElementById("p_10");
+        p.remove();
+        
+        var p = document.getElementById("p_11");
+        p.remove();
+
+         
+        for(let j=0; j<quan;j++){
+          document.getElementById("layout").children[j].style.display="flex";
+        }
+        
+      }
+      if (id == "p_8"){
+        for (let i=0;i<quan;i++){
+          var p = document.getElementById("p_8");
+         var l = document.getElementById("layout")
+                   var cln =  p.cloneNode(true);
+                   document.getElementById('layout').appendChild(cln); 
+        }
+        var p = document.getElementById("p_2");
+        p.remove();
+        var p = document.getElementById("p_3");
+        p.remove();
+        var p = document.getElementById("p_4");
+        p.remove();
+
+        var p = document.getElementById("p_5");
+        p.remove();
+
+        var p = document.getElementById("p_6");
+        p.remove();
+
+        var p = document.getElementById("p_7");
+        p.remove();
+
+        var p = document.getElementById("p_1");
+        p.remove();
+
+        var p = document.getElementById("p_9");
+        p.remove();
+        
+        var p = document.getElementById("p_10");
+        p.remove();
+        
+        var p = document.getElementById("p_11");
+        p.remove();
+
+         
+        for(let j=0; j<quan;j++){
+          document.getElementById("layout").children[j].style.display="flex";
+        }
+        
+      }
+      if (id == "p_9"){
+        for (let i=0;i<quan;i++){
+          var p = document.getElementById("p_9");
+         var l = document.getElementById("layout")
+                   var cln =  p.cloneNode(true);
+                   document.getElementById('layout').appendChild(cln); 
+        }
+        var p = document.getElementById("p_2");
+        p.remove();
+        var p = document.getElementById("p_3");
+        p.remove();
+        var p = document.getElementById("p_4");
+        p.remove();
+
+        var p = document.getElementById("p_5");
+        p.remove();
+
+        var p = document.getElementById("p_6");
+        p.remove();
+
+        var p = document.getElementById("p_7");
+        p.remove();
+
+        var p = document.getElementById("p_8");
+        p.remove();
+
+        var p = document.getElementById("p_1");
+        p.remove();
+        
+        var p = document.getElementById("p_10");
+        p.remove();
+        
+        var p = document.getElementById("p_11");
+        p.remove();
+
+         
+        for(let j=0; j<quan;j++){
+          document.getElementById("layout").children[j].style.display="flex";
+        }
+        
+      }
+      if (id == "p_10"){
+        for (let i=0;i<quan;i++){
+          var p = document.getElementById("p_10");
+         var l = document.getElementById("layout")
+                   var cln =  p.cloneNode(true);
+                   document.getElementById('layout').appendChild(cln); 
+        }
+        var p = document.getElementById("p_2");
+        p.remove();
+        var p = document.getElementById("p_3");
+        p.remove();
+        var p = document.getElementById("p_4");
+        p.remove();
+
+        var p = document.getElementById("p_5");
+        p.remove();
+
+        var p = document.getElementById("p_6");
+        p.remove();
+
+        var p = document.getElementById("p_7");
+        p.remove();
+
+        var p = document.getElementById("p_8");
+        p.remove();
+
+        var p = document.getElementById("p_9");
+        p.remove();
+        
+        var p = document.getElementById("p_1");
+        p.remove();
+        
+        var p = document.getElementById("p_11");
+        p.remove();
+
+         
+        for(let j=0; j<quan;j++){
+          document.getElementById("layout").children[j].style.display="flex";
+        }
+        
+      }
+      if (id == "p_11"){
+        for (let i=0;i<quan;i++){
+          var p = document.getElementById("p_11");
+         var l = document.getElementById("layout")
+                   var cln =  p.cloneNode(true);
+                   document.getElementById('layout').appendChild(cln); 
+        }
+        var p = document.getElementById("p_2");
+        p.remove();
+        var p = document.getElementById("p_3");
+        p.remove();
+        var p = document.getElementById("p_4");
+        p.remove();
+
+        var p = document.getElementById("p_5");
+        p.remove();
+
+        var p = document.getElementById("p_6");
+        p.remove();
+
+        var p = document.getElementById("p_7");
+        p.remove();
+
+        var p = document.getElementById("p_8");
+        p.remove();
+
+        var p = document.getElementById("p_9");
+        p.remove();
+        
+        var p = document.getElementById("p_10");
+        p.remove();
+        
+        var p = document.getElementById("p_1");
+        p.remove();
+
+         
+        for(let j=0; j<quan;j++){
+          document.getElementById("layout").children[j].style.display="flex";
+        }
+        
+      }
+    </script>
+    <script>
+      function rotate() {
+        document.getElementById('layout').style.justifyContent = 'flex-end';
+      }
+      function initial() {
+        document.getElementById('layout').style.justifyContent = 'flex-start';
+      }
+      function row_1() {
+        document.getElementById('layout').style.flexDirection = 'row';
+      }
+      function column() {
+        document.getElementById('layout').style.flexDirection = 'column';
+        document.getElementById('layout').style.width = row;
+      }
+      function rowReverse() {
+        document.getElementById('layout').style.flexDirection = 'row-reverse';
+      }
+      function columnReverse() {
+        document.getElementById('layout').style.flexDirection =
+          'column-reverse';
+        document.getElementById('layout').style.width = row;
+      }
+      function rotate_1() {
+        document.getElementById('layout').style.alignContent = 'flex-end';
+      }
+      function initial_1() {
+        document.getElementById('layout').style.alignContent = 'flex-start';
+      }
+
+      /*area*/
+      function v_start() {
+        document.getElementById('area').style.alignItems = 'flex-start';
+      }
+      function v_center() {
+        document.getElementById('area').style.alignItems = 'center';
+      }
+      function v_end() {
+        document.getElementById('area').style.alignItems = 'flex-end';
+      }
+      function h_start() {
+        document.getElementById('area').style.justifyContent = 'flex-start';
+      }
+      function h_center() {
+        document.getElementById('area').style.justifyContent = 'center';
+      }
+      function h_end() {
+        document.getElementById('area').style.justifyContent = 'flex-end';
+      }
+    </script>
+    <script>
+      let myProducts = {
+        p_8: {
+          id: 'p_8',
+          name: 'Venus pride',
+          length: '596mm',
+          width: '612mm',
+        },
+        p_9: {
+          id: 'p_9',
+          name: 'Venus Prime',
+          length: '596mm',
+          width: '612mm',
+        },
+        p_10: {
+          id: 'p_10',
+          name: 'Venus WP1',
+          length: '754mm',
+          width: '600mm',
+        },
+        p_11: {
+          id: 'p_11',
+          name: 'Venus WP2',
+          length: '765mm',
+          width: '636mm',
+        },
+        p_6: {
+          id: 'p_6',
+          name: 'Venus Excel',
+          length: '562mm',
+          width: '612mm',
+        },
+        p_3: {
+          id: 'p_3',
+          name: 'Pluto',
+          length: '497mm',
+          width: '540mm',
+        },
+        
+        p_7: {
+          id: "p_7",
+          name: " Venus Gang Chair 2 seater",
+          length: '1890mm',
+          width: '610mm',
+        },
+        p_2: {
+          id: "p_2",
+          name: "Jupiter Gang Chair 2 seater",
+          length: '1242mm',
+          width: '623mm',
+        },
+        p_4: {
+          id: "p_4",
+          name: "Jupiter Gang Chair 3 seater",
+          length: '1830mm',
+          width: '623mm',
+        },
+        p_1: {
+          id: "p_1",
+          name: "Junior Jupiter Gang Chair 2 side table",
+          length: '1455mm',
+          width: '610mm',
+        },
+        p_5: {
+          id: "p_5",
+          name: "Table Square / Rectangular",
+          length: '900mm',
+          width: '900mm',
+        },
+      
+      };
+      if (id == "p_1"){
+        var content = "Information:"+"<br>"
+        for(var key in myProducts.p_1){
+          content += '"'+key +'" :'+'"'+myProducts.p_1[key]+'";'+"<br>"
+        }
+        content+=""
+
+        document.getElementById("content").innerHTML=content;
+          }
+      
+      if (id == "p_2"){
+        var content = "Information =>"+"<br>"
+for(var key in myProducts.p_2){
+  content += '"'+key +'" :'+'"'+myProducts.p_2[key]+'";'+"<br>"
+}
+content+=""
+        document.getElementById("content").innerHTML=content;
+          }
+            if (id == "p_3"){
+              var content = "<h1>Information =></h1>"+"<br>"
+              for(var key in myProducts.p_3){
+                content += '"'+key +'" :'+'"'+myProducts.p_3[key]+'";'+"<br>"
+              }
+              content+=""
+              document.getElementById("content").innerHTML=content;
+                }
+              if (id == "p_4"){
+                var content = "Information =>"+"<br>"
+                for(var key in myProducts.p_4){
+                  content += '"'+key +'" :'+'"'+myProducts.p_4[key]+'";'+"<br>"
+                }
+                content+=""
+                document.getElementById("content").innerHTML=content;
+                  }
+               if (id == "p_5"){
+                var content = "Information =>"+"<br>"
+        for(var key in myProducts.p_5){
+          content += '"'+key +'" :'+'"'+myProducts.p_5[key]+'";'+"<br>"
+        }
+        content+=""
+        document.getElementById("content").innerHTML=content;
+          }
+                 if (id == "p_6"){
+                  var content = "Information =>"+"<br>"
+                  for(var key in myProducts.p_6){
+                    content += '"'+key +'" :'+'"'+myProducts.p_6[key]+'";'+"<br>"
+                  }
+                  content+=""
+                  document.getElementById("content").innerHTML=content;
+                    }
+                    if (id == "p_7"){
+                      var content = "Information =>"+"<br>"
+                      for(var key in myProducts.p_7){
+                        content += '"'+key +'" :'+'"'+myProducts.p_7[key]+'";'+"<br>"
+                      }
+                      content+=""
+                      document.getElementById("content").innerHTML=content;
+                        }
+                      if (id == "p_8"){
+                        var content = "Information =>"+"<br>"
+                        for(var key in myProducts.p_8){
+                          content += '"'+key +'" :'+'"'+myProducts.p_8[key]+'";'+"<br>"
+                        }
+                        content+=""
+                        document.getElementById("content").innerHTML=content;
+                          }
+                        if (id == "p_9"){
+                          var content = "Information =>"+"<br>"
+                          for(var key in myProducts.p_9){
+                            content += '"'+key +'" :'+'"'+myProducts.p_9[key]+'";'+"<br>"
+                          }
+                          content+=""
+                          document.getElementById("content").innerHTML=content;
+                            }
+                          if (id == "p_10"){
+                            var content = "Information =>"+"<br>"
+                            for(var key in myProducts.p_10){
+                              content += '"'+key +'" :'+'"'+myProducts.p_10[key]+'";'+"<br>"
+                            }
+                            content+=""
+                            document.getElementById("content").innerHTML=content;
+                              } 
+                           if (id == "p_11"){
+                            var content = "Information =>"+"<br>"
+                            for(var key in myProducts.p_11){
+                              content += '"'+key +'" :'+'"'+myProducts.p_11[key]+'";'+"<br>"
+                            }
+                            content+=""
+                            document.getElementById("content").innerHTML=content;
+                              } 
+                            
+    </script>
+    
+  </body>
+</html>
