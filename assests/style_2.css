@@ -64,6 +64,9 @@ h1:hover {
   align-items: center;
   flex-direction: column;
 }
+.flex-container {
+  margin-top: 30px;
+}
 .content {
   width: 100%;
   display: flex;
@@ -79,7 +82,6 @@ h1:hover {
 footer {
   background-color: #e5e5e5;
   color: tomato;
-  margin-top: 40px;
 }
 footer i {
   width: 30px;
@@ -226,10 +228,11 @@ li + li::before {
 
   align-items: center;
   justify-content: center;
-  background-image: url('./images/undraw_tree_swing_re_pqee.svg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('./images/undraw_tree_swing_re_pqee.svg');
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: cursive;
+  font-family: 'Poppins';
   flex-direction: column;
   color: #fff !important;
 }
