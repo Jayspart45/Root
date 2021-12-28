@@ -49,8 +49,10 @@
   <div class="container" 
   style="background-image:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('./assests/images/undraw_my_answer_re_k4dv.svg')";
   >
-    <label>Quantity:</label>
+    <label>Quantity given:</label>
     <h1 id="t_6"></h1>
+    <label>Quantity can place:</label>
+    <h1 id="t_7"></h1>
     <label>Length of Layout:
     
     <h1 id="t_1"></h1>
@@ -225,21 +227,21 @@
       
       <!---Content--->
       <section class="content" >
-        <div class="container">
+        <div class="container overflow-auto">
           <div class="area" id="area">
             <div id="layout">
   
-              <div id="p_1" class="p">JJGC2st</div>
- <div id="p_2" class="p">JGC2s</div>
- <div id="p_3" class="p">Pluto</div>
- <div id="p_4" class="p">JGC3s</div>
- <div id="p_5" class="p">T S/R</div>
- <div id="p_6" class="p">VE</div>
- <div id="p_7" class="p">VGC3s</div>
- <div id="p_8" class="p">Vpride</div>
- <div id="p_9" class="p">Vprime</div>
- <div id="p_10" class="p">Vwp1</div>
- <div id="p_11" class="p">Vwp2</div>
+              <div id="p_1" class="p"></div>
+ <div id="p_2" class="p"></div>
+ <div id="p_3" class="p"></div>
+ <div id="p_4" class="p"></div>
+ <div id="p_5" class="p"></div>
+ <div id="p_6" class="p"></div>
+ <div id="p_7" class="p"></div>
+ <div id="p_8" class="p"></div>
+ <div id="p_9" class="p"></div>
+ <div id="p_10" class="p"></div>
+ <div id="p_11" class="p"></div>
       
           </div>
         </div>
@@ -259,46 +261,155 @@
       ><i class="far fa-envelope"></i><i class="fab fa-linkedin-in"></i>
     </footer>
     <!---script-->
- 
+    <script>
+     
+    </script>
+  
+
     <script>
       var length = localStorage.getItem('length');
       var breath = localStorage.getItem('breath');
       var name = localStorage.getItem('name');
       var Row = localStorage.getItem('row');
-      var column = localStorage.getItem('column');
+      var columnv = localStorage.getItem('column');
       let quant = localStorage.getItem('quant');
       let id = localStorage.getItem('id');
+      let Quant1 = localStorage.getItem("Quant1");
+       let  unit = localStorage.getItem("unit");
+       console.log(unit);
 
 
-      var len, bth, row, col;
+      /*var len, bth, row, col;
       var feet = 152;
       len = length * feet + 'px';
       bth = breath * feet + 'px';
       row = Row * feet + 'px';
-      col = column * feet + 'px';
+      col = columnv * feet + 'px';
+ */
+    var feet = 152;
+    var ft = 152;
+    var mil = 0.49856; // 1mm(0.003652) *152
+    var centi = 4.92; // 1cm(0.03652)*152
+    var meter = 498.68768; //1m(3.652)*152
+
+ 
+      if(unit== 'Mm'){
+        var len = length * mil + 'px';
+        var bth = breath * mil + 'px';
+        var row = Row * mil + 'px';
+        var col = columnv * mil + 'px';
+        }
+        if(unit== 'feet'){
+          var len = length * ft + 'px';
+          var bth = breath * ft + 'px';
+          var row = Row * ft + 'px';
+          var col = columnv * ft + 'px';
+        }
+        if(unit== 'Cm'){
+          var len = length * centi + 'px';
+          var bth = breath * centi + 'px';
+          var row = Row * centi + 'px';
+          var col = columnv * centi + 'px';
+        }
+        if(unit== 'M'){
+          var len = length * meter + 'px';
+          var bth = breath * meter + 'px';
+          var row = Row * meter + 'px';
+          var col = columnv * meter + 'px';
+        }
+      
       function Calculate() {
         document.getElementById('layout').style.height = col;
         document.getElementById('layout').style.width = row;
         document.getElementById('area').style.height = len;
         document.getElementById('area').style.width = bth;
 
-    
 
+        document.getElementById('t_7').innerHTML= Quant1;
+        document.getElementById('t_6').innerHTML = quant;
+
+
+
+        if(id == "p_1"){
+          var widthp= 304.2 ;
+           var heightp= 725.59 ;
+        
+        }
+        if(id == "p_2"){
+          var widthp= 310.68;
+          var heightp= 619.37;
+        
+        }
+        if(id == "p_3"){
+          var widthp= 269;
+          var heightp= 247.76;
+        }   
+        if(id == "p_4"){
+          var widthp= 310.68;
+          var heightp= 912.6;
+        }
+        if(id == "p_5"){
+          var widthp= 448.4;
+          var heightp= 448.4;
+        }
+        if(id == "p_6"){
+          var widthp= 305.2;
+          var heightp= 279.68;
+        }
+        if(id == "p_7"){
+          var widthp= 304;
+          var heightp= 942.4;
+        }
+        if(id == "p_8"){
+          var widthp= 275;
+          var heightp= 297.92;
+        }
+        if(id == "p_9"){
+          var widthp= 275.12;
+          var heightp= 267.92;
+        }
+        if(id == "p_10"){
+          var widthp= 299.212;
+          var heightp= 375.869;
+        }
+        if(id == "p_11"){
+          var widthp= 317;
+          var heightp= 381.368;
+        }
+        
+        var pArea = (widthp*heightp);
+        console.log("area:"+ pArea);
+        var reqArea = pArea*(parseInt(quant));
+        console.log("ReqArea:"+reqArea); 
+        if (unit == "feet"){
+        var newQuan = (Math.trunc((Row * feet) / widthp)) * Math.trunc(((columnv * feet) / heightp));
+        }
+        if(unit == "M"){
+        var newQuan = (Math.trunc((Row * meter) / widthp)) * Math.trunc(((columnv * meter) / heightp));
+
+        }
+        if(unit == "Cm"){
+          var newQuan = (Math.trunc((Row * centi) / widthp)) * Math.trunc(((columnv * centi) / heightp));
+
+        }
+        if(unit=="Mm"){
+          var newQuan = (Math.trunc((Row * mil) / widthp)) * Math.trunc(((columnv * mil) / heightp));
+
+        }
+        console.log(newQuan);
+        localStorage.setItem('Quant1',Math.round(newQuan));
+       
+        if(parseInt(quant) <= newQuan){
+              buildLayout()
+            } else{
+              console.log(Math.round(newQuan));
+              reduceQuantity(Math.round(newQuan));
+            }
       }
-    </script>
-      <script>
-        document.getElementById('t_1').innerHTML = length;
-        document.getElementById('t_2').innerHTML = breath;
-        document.getElementById('t_3').innerHTML = Row;
-        document.getElementById('t_4').innerHTML = column;
-        document.getElementById('t_5').innerHTML = name;
-        document.getElementById('t_6').innerHTML= quant;
-      </script>
-    <script>
-      let quan = parseInt(quant);
-      console.log(quan)
-      if (id == "p_1"){
-        for (let i=0;i<quan;i++){
+
+      function buildLayout(){
+        if(id== "p_1"){
+        for (let i=0;i<quant;i++){
           var p = document.getElementById("p_1");
          var l = document.getElementById("layout")
                    var cln =  p.cloneNode(true);
@@ -333,19 +444,423 @@
         p.remove();
 
          
-        for(let j=0; j<quan;j++){
-          document.getElementById("layout").children[j].style.display="flex";
+        for(let j=0; j<quant;j++){
+          document.getElementById("layout").children[j].style.display="inline";
         }
-        
       }
-      if (id == "p_2"){
-        for (let i=0;i<quan;i++){
+        if (id == "p_2"){
+
+          for (let i=0;i<quant;i++){
+            var p = document.getElementById("p_2");
+           var l = document.getElementById("layout")
+                     var cln =  p.cloneNode(true);
+                     document.getElementById('layout').appendChild(cln); 
+          }
+          var p = document.getElementById("p_1");
+          p.remove();
+          var p = document.getElementById("p_3");
+          p.remove();
+          var p = document.getElementById("p_4");
+          p.remove();
+  
+          var p = document.getElementById("p_5");
+          p.remove();
+  
+          var p = document.getElementById("p_6");
+          p.remove();
+  
+          var p = document.getElementById("p_7");
+          p.remove();
+  
+          var p = document.getElementById("p_8");
+          p.remove();
+  
+          var p = document.getElementById("p_9");
+          p.remove();
+          
+          var p = document.getElementById("p_10");
+          p.remove();
+          
+          var p = document.getElementById("p_11");
+          p.remove();
+  
+           
+          for(let j=0; j<quant;j++){
+            document.getElementById("layout").children[j].style.display="inline";
+          }
+        }
+        if (id == "p_3"){
+
+          for (let i=0;i<quant;i++){
+            var p = document.getElementById("p_3");
+           var l = document.getElementById("layout")
+                     var cln =  p.cloneNode(true);
+                     document.getElementById('layout').appendChild(cln); 
+          }
+          var p = document.getElementById("p_1");
+          p.remove();
           var p = document.getElementById("p_2");
+          p.remove();
+          var p = document.getElementById("p_4");
+          p.remove();
+  
+          var p = document.getElementById("p_5");
+          p.remove();
+  
+          var p = document.getElementById("p_6");
+          p.remove();
+  
+          var p = document.getElementById("p_7");
+          p.remove();
+  
+          var p = document.getElementById("p_8");
+          p.remove();
+  
+          var p = document.getElementById("p_9");
+          p.remove();
+          
+          var p = document.getElementById("p_10");
+          p.remove();
+          
+          var p = document.getElementById("p_11");
+          p.remove();
+  
+           
+          for(let j=0; j<quant;j++){
+            document.getElementById("layout").children[j].style.display="inline";
+          }
+        }
+        if(id== "p_4"){
+          for (let i=0;i<quant;i++){
+            var p = document.getElementById("p_4");
+           var l = document.getElementById("layout")
+                     var cln =  p.cloneNode(true);
+                     document.getElementById('layout').appendChild(cln); 
+          }
+          var p = document.getElementById("p_2");
+          p.remove();
+          var p = document.getElementById("p_3");
+          p.remove();
+          var p = document.getElementById("p_1");
+          p.remove();
+  
+          var p = document.getElementById("p_5");
+          p.remove();
+  
+          var p = document.getElementById("p_6");
+          p.remove();
+  
+          var p = document.getElementById("p_7");
+          p.remove();
+  
+          var p = document.getElementById("p_8");
+          p.remove();
+  
+          var p = document.getElementById("p_9");
+          p.remove();
+          
+          var p = document.getElementById("p_10");
+          p.remove();
+          
+          var p = document.getElementById("p_11");
+          p.remove();
+  
+           
+          for(let j=0; j<quant;j++){
+            document.getElementById("layout").children[j].style.display="inline";
+          }
+        }
+        if(id== "p_5"){
+          for (let i=0;i<quant;i++){
+            var p = document.getElementById("p_5");
+           var l = document.getElementById("layout")
+                     var cln =  p.cloneNode(true);
+                     document.getElementById('layout').appendChild(cln); 
+          }
+          var p = document.getElementById("p_2");
+          p.remove();
+          var p = document.getElementById("p_3");
+          p.remove();
+          var p = document.getElementById("p_4");
+          p.remove();
+  
+          var p = document.getElementById("p_1");
+          p.remove();
+  
+          var p = document.getElementById("p_6");
+          p.remove();
+  
+          var p = document.getElementById("p_7");
+          p.remove();
+  
+          var p = document.getElementById("p_8");
+          p.remove();
+  
+          var p = document.getElementById("p_9");
+          p.remove();
+          
+          var p = document.getElementById("p_10");
+          p.remove();
+          
+          var p = document.getElementById("p_11");
+          p.remove();
+  
+           
+          for(let j=0; j<quant;j++){
+            document.getElementById("layout").children[j].style.display="inline";
+          }
+        }
+        if(id== "p_6"){
+          for (let i=0;i<quant;i++){
+            var p = document.getElementById("p_6");
+           var l = document.getElementById("layout")
+                     var cln =  p.cloneNode(true);
+                     document.getElementById('layout').appendChild(cln); 
+          }
+          var p = document.getElementById("p_2");
+          p.remove();
+          var p = document.getElementById("p_3");
+          p.remove();
+          var p = document.getElementById("p_4");
+          p.remove();
+  
+          var p = document.getElementById("p_5");
+          p.remove();
+  
+          var p = document.getElementById("p_1");
+          p.remove();
+  
+          var p = document.getElementById("p_7");
+          p.remove();
+  
+          var p = document.getElementById("p_8");
+          p.remove();
+  
+          var p = document.getElementById("p_9");
+          p.remove();
+          
+          var p = document.getElementById("p_10");
+          p.remove();
+          
+          var p = document.getElementById("p_11");
+          p.remove();
+  
+           
+          for(let j=0; j<quant;j++){
+            document.getElementById("layout").children[j].style.display="inline";
+          }
+        }
+        if(id== "p_7"){
+          for (let i=0;i<quant;i++){
+            var p = document.getElementById("p_7");
+           var l = document.getElementById("layout")
+                     var cln =  p.cloneNode(true);
+                     document.getElementById('layout').appendChild(cln); 
+          }
+          var p = document.getElementById("p_2");
+          p.remove();
+          var p = document.getElementById("p_3");
+          p.remove();
+          var p = document.getElementById("p_4");
+          p.remove();
+  
+          var p = document.getElementById("p_5");
+          p.remove();
+  
+          var p = document.getElementById("p_6");
+          p.remove();
+  
+          var p = document.getElementById("p_1");
+          p.remove();
+  
+          var p = document.getElementById("p_8");
+          p.remove();
+  
+          var p = document.getElementById("p_9");
+          p.remove();
+          
+          var p = document.getElementById("p_10");
+          p.remove();
+          
+          var p = document.getElementById("p_11");
+          p.remove();
+  
+           
+          for(let j=0; j<quant;j++){
+            document.getElementById("layout").children[j].style.display="inline";
+          }
+        }
+        if(id== "p_8"){
+          for (let i=0;i<quant;i++){
+            var p = document.getElementById("p_8");
+           var l = document.getElementById("layout")
+                     var cln =  p.cloneNode(true);
+                     document.getElementById('layout').appendChild(cln); 
+          }
+          var p = document.getElementById("p_2");
+          p.remove();
+          var p = document.getElementById("p_3");
+          p.remove();
+          var p = document.getElementById("p_4");
+          p.remove();
+  
+          var p = document.getElementById("p_5");
+          p.remove();
+  
+          var p = document.getElementById("p_6");
+          p.remove();
+  
+          var p = document.getElementById("p_7");
+          p.remove();
+  
+          var p = document.getElementById("p_1");
+          p.remove();
+  
+          var p = document.getElementById("p_9");
+          p.remove();
+          
+          var p = document.getElementById("p_10");
+          p.remove();
+          
+          var p = document.getElementById("p_11");
+          p.remove();
+  
+           
+          for(let j=0; j<quant;j++){
+            document.getElementById("layout").children[j].style.display="inline";
+          }
+        }
+        if(id== "p_9"){
+          for (let i=0;i<quant;i++){
+            var p = document.getElementById("p_9");
+           var l = document.getElementById("layout")
+                     var cln =  p.cloneNode(true);
+                     document.getElementById('layout').appendChild(cln); 
+          }
+          var p = document.getElementById("p_2");
+          p.remove();
+          var p = document.getElementById("p_3");
+          p.remove();
+          var p = document.getElementById("p_4");
+          p.remove();
+  
+          var p = document.getElementById("p_5");
+          p.remove();
+  
+          var p = document.getElementById("p_6");
+          p.remove();
+  
+          var p = document.getElementById("p_7");
+          p.remove();
+  
+          var p = document.getElementById("p_8");
+          p.remove();
+  
+          var p = document.getElementById("p_1");
+          p.remove();
+          
+          var p = document.getElementById("p_10");
+          p.remove();
+          
+          var p = document.getElementById("p_11");
+          p.remove();
+  
+           
+          for(let j=0; j<quant;j++){
+            document.getElementById("layout").children[j].style.display="inline";
+          }
+        }
+        if(id== "p_10"){
+          for (let i=0;i<quant;i++){
+            var p = document.getElementById("p_10");
+           var l = document.getElementById("layout")
+                     var cln =  p.cloneNode(true);
+                     document.getElementById('layout').appendChild(cln); 
+          }
+          var p = document.getElementById("p_2");
+          p.remove();
+          var p = document.getElementById("p_3");
+          p.remove();
+          var p = document.getElementById("p_4");
+          p.remove();
+  
+          var p = document.getElementById("p_5");
+          p.remove();
+  
+          var p = document.getElementById("p_6");
+          p.remove();
+  
+          var p = document.getElementById("p_7");
+          p.remove();
+  
+          var p = document.getElementById("p_8");
+          p.remove();
+  
+          var p = document.getElementById("p_9");
+          p.remove();
+          
+          var p = document.getElementById("p_1");
+          p.remove();
+          
+          var p = document.getElementById("p_11");
+          p.remove();
+  
+           
+          for(let j=0; j<quant;j++){
+            document.getElementById("layout").children[j].style.display="inline";
+          }
+        }
+        if(id== "p_11"){
+          for (let i=0;i<quant;i++){
+            var p = document.getElementById("p_11");
+           var l = document.getElementById("layout")
+                     var cln =  p.cloneNode(true);
+                     document.getElementById('layout').appendChild(cln); 
+          }
+          var p = document.getElementById("p_2");
+          p.remove();
+          var p = document.getElementById("p_3");
+          p.remove();
+          var p = document.getElementById("p_4");
+          p.remove();
+  
+          var p = document.getElementById("p_5");
+          p.remove();
+  
+          var p = document.getElementById("p_6");
+          p.remove();
+  
+          var p = document.getElementById("p_7");
+          p.remove();
+  
+          var p = document.getElementById("p_8");
+          p.remove();
+  
+          var p = document.getElementById("p_9");
+          p.remove();
+          
+          var p = document.getElementById("p_10");
+          p.remove();
+          
+          var p = document.getElementById("p_1");
+          p.remove();
+  
+           
+          for(let j=0; j<quant;j++){
+            document.getElementById("layout").children[j].style.display="inline";
+          }
+        }
+      }
+
+      function reduceQuantity(qT){
+        if(id == "p_1"){
+        for (let i=0;i<qT;i++){
+          var p = document.getElementById("p_1");
          var l = document.getElementById("layout")
                    var cln =  p.cloneNode(true);
                    document.getElementById('layout').appendChild(cln); 
         }
-        var p = document.getElementById("p_1");
+        var p = document.getElementById("p_2");
         p.remove();
         var p = document.getElementById("p_3");
         p.remove();
@@ -374,21 +889,62 @@
         p.remove();
 
          
-        for(let j=0; j<quan;j++){
+        for(let j=0; j<qT;j++){
           document.getElementById("layout").children[j].style.display="flex";
         }
-        
+      }
+        if (id == "p_2"){
+
+          for (let i=0;i<qT;i++){
+            var p = document.getElementById("p_2");
+           var l = document.getElementById("layout")
+                     var cln =  p.cloneNode(true);
+                     document.getElementById('layout').appendChild(cln); 
+          }
+          var p = document.getElementById("p_1");
+          p.remove();
+          var p = document.getElementById("p_3");
+          p.remove();
+          var p = document.getElementById("p_4");
+          p.remove();
+  
+          var p = document.getElementById("p_5");
+          p.remove();
+  
+          var p = document.getElementById("p_6");
+          p.remove();
+  
+          var p = document.getElementById("p_7");
+          p.remove();
+  
+          var p = document.getElementById("p_8");
+          p.remove();
+  
+          var p = document.getElementById("p_9");
+          p.remove();
+          
+          var p = document.getElementById("p_10");
+          p.remove();
+          
+          var p = document.getElementById("p_11");
+          p.remove();
+  
+           
+          for(let j=0; j<qT;j++){
+            document.getElementById("layout").children[j].style.display="flex";
+        }
       }
       if (id == "p_3"){
-        for (let i=0;i<quan;i++){
+
+        for (let i=0;i<qT;i++){
           var p = document.getElementById("p_3");
          var l = document.getElementById("layout")
                    var cln =  p.cloneNode(true);
                    document.getElementById('layout').appendChild(cln); 
         }
-        var p = document.getElementById("p_2");
-        p.remove();
         var p = document.getElementById("p_1");
+        p.remove();
+        var p = document.getElementById("p_2");
         p.remove();
         var p = document.getElementById("p_4");
         p.remove();
@@ -415,339 +971,346 @@
         p.remove();
 
          
-        for(let j=0; j<quan;j++){
+        for(let j=0; j<qT;j++){
           document.getElementById("layout").children[j].style.display="flex";
-        }
-        
       }
-      if (id == "p_4"){
-        for (let i=0;i<quan;i++){
-          var p = document.getElementById("p_4");
-         var l = document.getElementById("layout")
-                   var cln =  p.cloneNode(true);
-                   document.getElementById('layout').appendChild(cln); 
-        }
-        var p = document.getElementById("p_2");
-        p.remove();
-        var p = document.getElementById("p_3");
-        p.remove();
-        var p = document.getElementById("p_1");
-        p.remove();
-
-        var p = document.getElementById("p_5");
-        p.remove();
-
-        var p = document.getElementById("p_6");
-        p.remove();
-
-        var p = document.getElementById("p_7");
-        p.remove();
-
-        var p = document.getElementById("p_8");
-        p.remove();
-
-        var p = document.getElementById("p_9");
-        p.remove();
-        
-        var p = document.getElementById("p_10");
-        p.remove();
-        
-        var p = document.getElementById("p_11");
-        p.remove();
-
-         
-        for(let j=0; j<quan;j++){
-          document.getElementById("layout").children[j].style.display="flex";
-        }
-        
-      }
-      if (id == "p_5"){
-        for (let i=0;i<quan;i++){
-          var p = document.getElementById("p_5");
-         var l = document.getElementById("layout")
-                   var cln =  p.cloneNode(true);
-                   document.getElementById('layout').appendChild(cln); 
-        }
-        var p = document.getElementById("p_2");
-        p.remove();
-        var p = document.getElementById("p_3");
-        p.remove();
+    }
+    if(id == "p_4"){
+      for (let i=0;i<qT;i++){
         var p = document.getElementById("p_4");
-        p.remove();
-
-        var p = document.getElementById("p_1");
-        p.remove();
-
-        var p = document.getElementById("p_6");
-        p.remove();
-
-        var p = document.getElementById("p_7");
-        p.remove();
-
-        var p = document.getElementById("p_8");
-        p.remove();
-
-        var p = document.getElementById("p_9");
-        p.remove();
-        
-        var p = document.getElementById("p_10");
-        p.remove();
-        
-        var p = document.getElementById("p_11");
-        p.remove();
-
-         
-        for(let j=0; j<quan;j++){
-          document.getElementById("layout").children[j].style.display="flex";
-        }
-        
+       var l = document.getElementById("layout")
+                 var cln =  p.cloneNode(true);
+                 document.getElementById('layout').appendChild(cln); 
       }
-      if (id == "p_6"){
-        for (let i=0;i<quan;i++){
-          var p = document.getElementById("p_6");
-         var l = document.getElementById("layout")
-                   var cln =  p.cloneNode(true);
-                   document.getElementById('layout').appendChild(cln); 
-        }
-        var p = document.getElementById("p_2");
-        p.remove();
-        var p = document.getElementById("p_3");
-        p.remove();
-        var p = document.getElementById("p_4");
-        p.remove();
+      var p = document.getElementById("p_2");
+      p.remove();
+      var p = document.getElementById("p_3");
+      p.remove();
+      var p = document.getElementById("p_1");
+      p.remove();
 
+      var p = document.getElementById("p_5");
+      p.remove();
+
+      var p = document.getElementById("p_6");
+      p.remove();
+
+      var p = document.getElementById("p_7");
+      p.remove();
+
+      var p = document.getElementById("p_8");
+      p.remove();
+
+      var p = document.getElementById("p_9");
+      p.remove();
+      
+      var p = document.getElementById("p_10");
+      p.remove();
+      
+      var p = document.getElementById("p_11");
+      p.remove();
+
+       
+      for(let j=0; j<qT;j++){
+        document.getElementById("layout").children[j].style.display="flex";
+      }
+    }    
+    if(id == "p_5"){
+      for (let i=0;i<qT;i++){
         var p = document.getElementById("p_5");
-        p.remove();
-
-        var p = document.getElementById("p_1");
-        p.remove();
-
-        var p = document.getElementById("p_7");
-        p.remove();
-
-        var p = document.getElementById("p_8");
-        p.remove();
-
-        var p = document.getElementById("p_9");
-        p.remove();
-        
-        var p = document.getElementById("p_10");
-        p.remove();
-        
-        var p = document.getElementById("p_11");
-        p.remove();
-
-         
-        for(let j=0; j<quan;j++){
-          document.getElementById("layout").children[j].style.display="flex";
-        }
-        
+       var l = document.getElementById("layout")
+                 var cln =  p.cloneNode(true);
+                 document.getElementById('layout').appendChild(cln); 
       }
-      if (id == "p_7"){
-        for (let i=0;i<quan;i++){
-          var p = document.getElementById("p_7");
-         var l = document.getElementById("layout")
-                   var cln =  p.cloneNode(true);
-                   document.getElementById('layout').appendChild(cln); 
-        }
-        var p = document.getElementById("p_2");
-        p.remove();
-        var p = document.getElementById("p_3");
-        p.remove();
-        var p = document.getElementById("p_4");
-        p.remove();
+      var p = document.getElementById("p_2");
+      p.remove();
+      var p = document.getElementById("p_3");
+      p.remove();
+      var p = document.getElementById("p_4");
+      p.remove();
 
-        var p = document.getElementById("p_5");
-        p.remove();
+      var p = document.getElementById("p_1");
+      p.remove();
 
+      var p = document.getElementById("p_6");
+      p.remove();
+
+      var p = document.getElementById("p_7");
+      p.remove();
+
+      var p = document.getElementById("p_8");
+      p.remove();
+
+      var p = document.getElementById("p_9");
+      p.remove();
+      
+      var p = document.getElementById("p_10");
+      p.remove();
+      
+      var p = document.getElementById("p_11");
+      p.remove();
+
+       
+      for(let j=0; j<qT;j++){
+        document.getElementById("layout").children[j].style.display="flex";
+      }
+    }
+  
+    if(id == "p_6"){
+      for (let i=0;i<qT;i++){
         var p = document.getElementById("p_6");
-        p.remove();
-
-        var p = document.getElementById("p_1");
-        p.remove();
-
-        var p = document.getElementById("p_8");
-        p.remove();
-
-        var p = document.getElementById("p_9");
-        p.remove();
-        
-        var p = document.getElementById("p_10");
-        p.remove();
-        
-        var p = document.getElementById("p_11");
-        p.remove();
-
-         
-        for(let j=0; j<quan;j++){
-          document.getElementById("layout").children[j].style.display="flex";
-        }
-        
+       var l = document.getElementById("layout")
+                 var cln =  p.cloneNode(true);
+                 document.getElementById('layout').appendChild(cln); 
       }
-      if (id == "p_8"){
-        for (let i=0;i<quan;i++){
-          var p = document.getElementById("p_8");
-         var l = document.getElementById("layout")
-                   var cln =  p.cloneNode(true);
-                   document.getElementById('layout').appendChild(cln); 
-        }
-        var p = document.getElementById("p_2");
-        p.remove();
-        var p = document.getElementById("p_3");
-        p.remove();
-        var p = document.getElementById("p_4");
-        p.remove();
+      var p = document.getElementById("p_2");
+      p.remove();
+      var p = document.getElementById("p_3");
+      p.remove();
+      var p = document.getElementById("p_4");
+      p.remove();
 
-        var p = document.getElementById("p_5");
-        p.remove();
+      var p = document.getElementById("p_5");
+      p.remove();
 
-        var p = document.getElementById("p_6");
-        p.remove();
+      var p = document.getElementById("p_1");
+      p.remove();
 
+      var p = document.getElementById("p_7");
+      p.remove();
+
+      var p = document.getElementById("p_8");
+      p.remove();
+
+      var p = document.getElementById("p_9");
+      p.remove();
+      
+      var p = document.getElementById("p_10");
+      p.remove();
+      
+      var p = document.getElementById("p_11");
+      p.remove();
+
+       
+      for(let j=0; j<qT;j++){
+        document.getElementById("layout").children[j].style.display="flex";
+      }
+    }
+    if(id == "p_7"){
+      for (let i=0;i<qT;i++){
         var p = document.getElementById("p_7");
-        p.remove();
-
-        var p = document.getElementById("p_1");
-        p.remove();
-
-        var p = document.getElementById("p_9");
-        p.remove();
-        
-        var p = document.getElementById("p_10");
-        p.remove();
-        
-        var p = document.getElementById("p_11");
-        p.remove();
-
-         
-        for(let j=0; j<quan;j++){
-          document.getElementById("layout").children[j].style.display="flex";
-        }
-        
+       var l = document.getElementById("layout")
+                 var cln =  p.cloneNode(true);
+                 document.getElementById('layout').appendChild(cln); 
       }
-      if (id == "p_9"){
-        for (let i=0;i<quan;i++){
-          var p = document.getElementById("p_9");
-         var l = document.getElementById("layout")
-                   var cln =  p.cloneNode(true);
-                   document.getElementById('layout').appendChild(cln); 
-        }
-        var p = document.getElementById("p_2");
-        p.remove();
-        var p = document.getElementById("p_3");
-        p.remove();
-        var p = document.getElementById("p_4");
-        p.remove();
+      var p = document.getElementById("p_2");
+      p.remove();
+      var p = document.getElementById("p_3");
+      p.remove();
+      var p = document.getElementById("p_4");
+      p.remove();
 
-        var p = document.getElementById("p_5");
-        p.remove();
+      var p = document.getElementById("p_5");
+      p.remove();
 
-        var p = document.getElementById("p_6");
-        p.remove();
+      var p = document.getElementById("p_6");
+      p.remove();
 
-        var p = document.getElementById("p_7");
-        p.remove();
+      var p = document.getElementById("p_1");
+      p.remove();
 
+      var p = document.getElementById("p_8");
+      p.remove();
+
+      var p = document.getElementById("p_9");
+      p.remove();
+      
+      var p = document.getElementById("p_10");
+      p.remove();
+      
+      var p = document.getElementById("p_11");
+      p.remove();
+
+       
+      for(let j=0; j<qT;j++){
+        document.getElementById("layout").children[j].style.display="flex";
+      }
+    }
+    if(id == "p_8"){
+      for (let i=0;i<qT;i++){
         var p = document.getElementById("p_8");
-        p.remove();
-
-        var p = document.getElementById("p_1");
-        p.remove();
-        
-        var p = document.getElementById("p_10");
-        p.remove();
-        
-        var p = document.getElementById("p_11");
-        p.remove();
-
-         
-        for(let j=0; j<quan;j++){
-          document.getElementById("layout").children[j].style.display="flex";
-        }
-        
+       var l = document.getElementById("layout")
+                 var cln =  p.cloneNode(true);
+                 document.getElementById('layout').appendChild(cln); 
       }
-      if (id == "p_10"){
-        for (let i=0;i<quan;i++){
-          var p = document.getElementById("p_10");
-         var l = document.getElementById("layout")
-                   var cln =  p.cloneNode(true);
-                   document.getElementById('layout').appendChild(cln); 
-        }
-        var p = document.getElementById("p_2");
-        p.remove();
-        var p = document.getElementById("p_3");
-        p.remove();
-        var p = document.getElementById("p_4");
-        p.remove();
+      var p = document.getElementById("p_2");
+      p.remove();
+      var p = document.getElementById("p_3");
+      p.remove();
+      var p = document.getElementById("p_4");
+      p.remove();
 
-        var p = document.getElementById("p_5");
-        p.remove();
+      var p = document.getElementById("p_5");
+      p.remove();
 
-        var p = document.getElementById("p_6");
-        p.remove();
+      var p = document.getElementById("p_6");
+      p.remove();
 
-        var p = document.getElementById("p_7");
-        p.remove();
+      var p = document.getElementById("p_7");
+      p.remove();
 
-        var p = document.getElementById("p_8");
-        p.remove();
+      var p = document.getElementById("p_1");
+      p.remove();
 
+      var p = document.getElementById("p_9");
+      p.remove();
+      
+      var p = document.getElementById("p_10");
+      p.remove();
+      
+      var p = document.getElementById("p_11");
+      p.remove();
+
+       
+      for(let j=0; j<qT;j++){
+        document.getElementById("layout").children[j].style.display="flex";
+      }
+    }
+    if(id == "p_9"){
+      for (let i=0;i<qT;i++){
         var p = document.getElementById("p_9");
-        p.remove();
-        
-        var p = document.getElementById("p_1");
-        p.remove();
-        
-        var p = document.getElementById("p_11");
-        p.remove();
-
-         
-        for(let j=0; j<quan;j++){
-          document.getElementById("layout").children[j].style.display="flex";
-        }
-        
+       var l = document.getElementById("layout")
+                 var cln =  p.cloneNode(true);
+                 document.getElementById('layout').appendChild(cln); 
       }
-      if (id == "p_11"){
-        for (let i=0;i<quan;i++){
-          var p = document.getElementById("p_11");
-         var l = document.getElementById("layout")
-                   var cln =  p.cloneNode(true);
-                   document.getElementById('layout').appendChild(cln); 
-        }
-        var p = document.getElementById("p_2");
-        p.remove();
-        var p = document.getElementById("p_3");
-        p.remove();
-        var p = document.getElementById("p_4");
-        p.remove();
+      var p = document.getElementById("p_2");
+      p.remove();
+      var p = document.getElementById("p_3");
+      p.remove();
+      var p = document.getElementById("p_4");
+      p.remove();
 
-        var p = document.getElementById("p_5");
-        p.remove();
+      var p = document.getElementById("p_5");
+      p.remove();
 
-        var p = document.getElementById("p_6");
-        p.remove();
+      var p = document.getElementById("p_6");
+      p.remove();
 
-        var p = document.getElementById("p_7");
-        p.remove();
+      var p = document.getElementById("p_7");
+      p.remove();
 
-        var p = document.getElementById("p_8");
-        p.remove();
+      var p = document.getElementById("p_8");
+      p.remove();
 
-        var p = document.getElementById("p_9");
-        p.remove();
-        
+      var p = document.getElementById("p_1");
+      p.remove();
+      
+      var p = document.getElementById("p_10");
+      p.remove();
+      
+      var p = document.getElementById("p_11");
+      p.remove();
+
+       
+      for(let j=0; j<qT;j++){
+        document.getElementById("layout").children[j].style.display="flex";
+      }
+    }
+    if(id == "p_10"){
+      for (let i=0;i<qT;i++){
         var p = document.getElementById("p_10");
-        p.remove();
-        
-        var p = document.getElementById("p_1");
-        p.remove();
-
-         
-        for(let j=0; j<quan;j++){
-          document.getElementById("layout").children[j].style.display="flex";
-        }
-        
+       var l = document.getElementById("layout")
+                 var cln =  p.cloneNode(true);
+                 document.getElementById('layout').appendChild(cln); 
       }
+      var p = document.getElementById("p_2");
+      p.remove();
+      var p = document.getElementById("p_3");
+      p.remove();
+      var p = document.getElementById("p_4");
+      p.remove();
+
+      var p = document.getElementById("p_5");
+      p.remove();
+
+      var p = document.getElementById("p_6");
+      p.remove();
+
+      var p = document.getElementById("p_7");
+      p.remove();
+
+      var p = document.getElementById("p_8");
+      p.remove();
+
+      var p = document.getElementById("p_9");
+      p.remove();
+      
+      var p = document.getElementById("p_1");
+      p.remove();
+      
+      var p = document.getElementById("p_11");
+      p.remove();
+
+       
+      for(let j=0; j<qT;j++){
+        document.getElementById("layout").children[j].style.display="flex";
+      }
+    }
+    if(id == "p_11"){
+      for (let i=0;i<qT;i++){
+        var p = document.getElementById("p_11");
+       var l = document.getElementById("layout")
+                 var cln =  p.cloneNode(true);
+                 document.getElementById('layout').appendChild(cln); 
+      }
+      var p = document.getElementById("p_2");
+      p.remove();
+      var p = document.getElementById("p_3");
+      p.remove();
+      var p = document.getElementById("p_4");
+      p.remove();
+
+      var p = document.getElementById("p_5");
+      p.remove();
+
+      var p = document.getElementById("p_6");
+      p.remove();
+
+      var p = document.getElementById("p_7");
+      p.remove();
+
+      var p = document.getElementById("p_8");
+      p.remove();
+
+      var p = document.getElementById("p_9");
+      p.remove();
+      
+      var p = document.getElementById("p_10");
+      p.remove();
+      
+      var p = document.getElementById("p_1");
+      p.remove();
+
+       
+      for(let j=0; j<qT;j++){
+        document.getElementById("layout").children[j].style.display="flex";
+      }
+    }
+  }
+  document.getElementById('t_1').innerHTML = length;
+      document.getElementById('t_2').innerHTML = breath;
+      document.getElementById('t_3').innerHTML = Row;
+      document.getElementById('t_4').innerHTML = columnv;
+      document.getElementById('t_5').innerHTML = name;
+      
+    </script>
+ 
+      <script>
+          
+      </script>
+
+    <script>
+     
     </script>
     <script>
       function rotate() {
@@ -797,6 +1360,11 @@
       function h_end() {
         document.getElementById('area').style.justifyContent = 'flex-end';
       }
+    </script>
+    <script>
+      
+      
+      
     </script>
     <script>
       let myProducts = {

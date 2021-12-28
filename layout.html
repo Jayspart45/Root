@@ -236,8 +236,8 @@
       function update() {
         var select = document.getElementById('unit');
         var option = select.options[select.selectedIndex];
-        console.log(option.text);
         document.getElementById('text').innerHTML = option.text;
+        localStorage.setItem('unit', option.text);
       }
 
       update();
