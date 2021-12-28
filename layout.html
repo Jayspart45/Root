@@ -96,6 +96,17 @@
             <h1 class="py-lg-1 py-3">Layout Constraints</h1>
           </div>
           <div class="mb-3">
+            <label class="form-label">
+              Units
+              <select name="unit" id="unit" onchange="update()">
+                <option value="feet">feet</option>
+                <option value="Mm">Mm</option>
+                <option value="Cm">Cm</option>
+                <option value="M">M</option>
+              </select>
+            </label>
+          </div>
+          <div class="mb-3">
             <label class="form-label"
               >Length of Layout
               <input
@@ -147,6 +158,7 @@
               />
             </label>
           </div>
+
           <div class="mb-3">
             <label class="form-label"
               >Project Name
@@ -159,6 +171,7 @@
               />
             </label>
           </div>
+
           <div class="col-lg-6 col-md-6 col-12 py-lg-2 py-3">
             <a
               class="btn signin"
@@ -186,6 +199,8 @@
 
         Projectname:
         <h2 id="t_5"></h2>
+        Unit:
+        <h2 id="text"></h2>
       </div>
     </section>
 
@@ -217,6 +232,16 @@
     <!--bootstrap 35-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+    <script>
+      function update() {
+        var select = document.getElementById('unit');
+        var option = select.options[select.selectedIndex];
+        console.log(option.text);
+        document.getElementById('text').innerHTML = option.text;
+      }
+
+      update();
+    </script>
 
     <script>
       function calculate() {

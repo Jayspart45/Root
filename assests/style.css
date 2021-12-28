@@ -469,6 +469,8 @@ i {
 }
 #inputform select {
   width: 200px !important;
+  height: 40px;
+  border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
 }
 #inputform input {
@@ -577,7 +579,7 @@ input[data-error]::after {
 .breadcrumb li a {
   text-decoration: none;
   color: #fd7e14;
-  font-weight: 900;
+  font-weight: 700;
 }
 #myInput {
   background-image: url('/css/searchicon.png'); /* Add a search icon to input */
@@ -738,7 +740,7 @@ td img {
   width: 30px;
   border: 1px solid#000;
   background-color: seagreen;
-  box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.6);
+  box-shadow: 5px 0px 5px rgba(66, 40, 40, 0.6);
   padding: 0;
   border-radius: 5px;
   height: 30px;
