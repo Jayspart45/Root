@@ -212,9 +212,7 @@
                   </td>
                   <td>
                     <div class="PlusMinus">
-                      <button onclick="decrement()" class="btn text-center">-</button>
-                      <h1 id="quantity_1"></h1>
-                      <button onclick="increment()" class="btn text-center">+</button>
+                      <input id="quantity_1"></input>
                     </div>
                      
                   </td>
@@ -330,24 +328,12 @@
     
 
       <script>
-        var data = 0;
-        document.getElementById("quantity_1").innerText = data;
-        function decrement() {
-            data = data - 1;
-            if (data >= 0) {
-                document.getElementById("quantity_1").innerText = data;
-            } else {
-                alert("NO!Input Invalid");
-            }
-        }
-        function increment() {
-            data = data + 1;
-            document.getElementById("quantity_1").innerText = data;
-        }
+        
     
         function quant(){
-           let quant =  document.getElementById("quantity_1").innerText;
-           localStorage.setItem('quant',quant);
+          let quan = document.getElementById("quantity_1").value;        
+
+          localStorage.setItem('quant',quan);
         
            window.localStorage.href="flex.html";
 

@@ -5,7 +5,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  cursor: pointer;
   text-align: center;
 }
 body {
@@ -126,8 +125,6 @@ li + li::before {
 #layout {
   display: flex;
   flex-flow: row wrap;
-  gap: 12px;
-  padding: 12px 0 0 12px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
   align-content: flex-start;
   overflow: visible;
@@ -255,46 +252,59 @@ label {
 }
 /*Layout*/
 #layout #p_1 {
-  width: 304.2px !important;
-  height: 725.59px !important;
+  width: 304.2px;
+  height: 725.59px;
 }
 #layout #p_2 {
-  width: 310.68px !important;
-  height: 619.37px !important;
+  width: 310.68px;
+  height: 619.37px;
 }
 #layout #p_3 {
-  width: 269px !important;
-  height: 247.76px !important;
+  width: 269px;
+  height: 247.76px;
 }
 #layout #p_4 {
-  width: 310.68px !important;
-  height: 912.6px !important;
+  width: 310.68px;
+  height: 912.6px;
 }
 #layout #p_5 {
-  width: 448.4px !important;
-  height: 448.4px !important;
+  width: 448.4px;
+  height: 448.4px;
 }
 #layout #p_6 {
-  width: 305.2px !important;
-  height: 279.68px !important;
+  width: 305.2px;
+  height: 279.68px;
 }
 #layout #p_7 {
-  width: 304px !important;
-  height: 942.4px !important;
+  width: 304px;
+  height: 942.4px;
 }
 #layout #p_8 {
-  width: 275px !important;
-  height: 297.92px !important;
+  width: 275px;
+  height: 297.92px;
 }
 #layout #p_9 {
-  width: 275.12px !important;
-  height: 267.92px !important;
+  width: 275.12px;
+  height: 267.92px;
 }
 #layout #p_10 {
-  width: 299.212px !important;
-  height: 375.869px !important;
+  width: 299.212px;
+  height: 375.869px;
 }
 #layout #p_11 {
-  width: 317px !important;
-  height: 381.368px !important;
+  width: 317px;
+  height: 381.368px;
+}
+label {
+  font-size: 50px;
+  font-family: cursive;
+  font-weight: 600;
+  color: #fd7e14;
+  padding: 20px;
+}
+input {
+  width: 200px;
+  height: 50px;
+  font-size: 30px;
+  border-radius: 5px;
 }

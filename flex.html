@@ -111,22 +111,7 @@
         >
 
         <br />
-        <a
-          class="btn"
-          type="button"
-          style="margin: 0 0 10px 0"
-          href="#layout"
-          onclick="rotate()"
-          >flex-end(V)</a
-        >
-        <a
-          class="btn"
-          type="button"
-          style="margin: 0 0 10px 0"
-          href="#layout"
-          onclick="initial()"
-          >flex-start(V)</a
-        >
+
         <a
           class="btn"
           type="button"
@@ -159,22 +144,7 @@
           onclick="columnReverse()"
           >Column-Reverse</a
         >
-        <a
-          class="btn"
-          type="button"
-          style="margin: 0 0 10px 0"
-          href="#layout"
-          onclick="initial_1()"
-          >flex-start(H)</a
-        >
-        <a
-          class="btn"
-          type="button"
-          style="margin: 0 0 10px 0"
-          href="#layout"
-          onclick="rotate_1()"
-          >flex-end(H)</a
-        ><br />
+    <br />
         <a
           class="btn"
           type="button"
@@ -223,6 +193,21 @@
           onclick="h_end()"
           >flex-end(H)</a
         >
+        <a
+        class="btn"
+        style="margin: 0 0 10px 0; background-color:rgb(255, 111, 0)"
+        type="button"
+        href="#layout"
+        onclick="rotate90()"
+        >Rotate90</a
+      >
+      <label>
+        Quantity:
+      <input type="number" id="quantA"  
+      oninput="setQuant()"
+      >
+      </label>
+     
       </section>
       
       <!---Content--->
@@ -267,6 +252,12 @@
   
 
     <script>
+      function setQuant(){
+        let quantC = document.getElementById("quantA").value;
+        console.log(quantC);
+        localStorage.setItem("Quant1",quantC);
+       }
+   
       var length = localStorage.getItem('length');
       var breath = localStorage.getItem('breath');
       var name = localStorage.getItem('name');
@@ -275,11 +266,24 @@
       let quant = localStorage.getItem('quant');
       let id = localStorage.getItem('id');
       let Quant1 = localStorage.getItem("Quant1");
+      
        let  unit = localStorage.getItem("unit");
+       let spaceo = localStorage.getItem("spaceo");
+       let spaceb = localStorage.getItem("spaceb");
+      
        console.log(unit);
-
+       
+       let spaceO = Number(spaceo);
+       let spaceB = Number(spaceb);
+       console.log(spaceO);
+       console.log(spaceB);
+      
+       
+  
+      
 
       /*var len, bth, row, col;
+
       var feet = 152;
       len = length * feet + 'px';
       bth = breath * feet + 'px';
@@ -298,33 +302,59 @@
         var bth = breath * mil + 'px';
         var row = Row * mil + 'px';
         var col = columnv * mil + 'px';
+        var space= spaceO * mil;
+        var spaceA= spaceB * mil;
+        console.log(space);
+
         }
-        if(unit== 'feet'){
+        else if(unit== 'feet'){
           var len = length * ft + 'px';
           var bth = breath * ft + 'px';
           var row = Row * ft + 'px';
           var col = columnv * ft + 'px';
+        var space= spaceO * ft;
+        var spaceA= spaceB * ft;
+
+        console.log(space);
+
         }
-        if(unit== 'Cm'){
+        else if(unit== 'Cm'){
           var len = length * centi + 'px';
           var bth = breath * centi + 'px';
           var row = Row * centi + 'px';
           var col = columnv * centi + 'px';
+        var space= spaceO * centi;
+        var spaceA= spaceB * centi;
+
+        console.log(space);
+
         }
-        if(unit== 'M'){
+        else if(unit== 'M'){
           var len = length * meter + 'px';
           var bth = breath * meter + 'px';
           var row = Row * meter + 'px';
           var col = columnv * meter + 'px';
+        var space=spaceO * meter;
+        var spaceA= spaceB * meter;
+
+        console.log(space);
+
         }
-      
+        let spaceX = space+"px";
+        let spaceY = spaceA+"px";
+        let spaceZ = spaceA+"px";
+        console.log(spaceX);
+        document.getElementById("layout").style.gap=spaceX;
+        document.getElementById("layout").style.paddingLeft=spaceY;
+        document.getElementById("layout").style.paddingTop=spaceZ;
+
       function Calculate() {
         document.getElementById('layout').style.height = col;
         document.getElementById('layout').style.width = row;
         document.getElementById('area').style.height = len;
         document.getElementById('area').style.width = bth;
 
-
+      
         document.getElementById('t_7').innerHTML= Quant1;
         document.getElementById('t_6').innerHTML = quant;
 
@@ -377,23 +407,25 @@
           var heightp= 381.368;
         }
         
-        var pArea = (widthp*heightp);
+        /*var pArea = (widthp*heightp);
         console.log("area:"+ pArea);
         var reqArea = pArea*(parseInt(quant));
-        console.log("ReqArea:"+reqArea); 
+        console.log("ReqArea:"+reqArea);*/
         if (unit == "feet"){
-        var newQuan = (Math.trunc((Row * feet) / widthp)) * Math.trunc(((columnv * feet) / heightp));
+        var newQuan = (Math.trunc((Row * feet) / (widthp+space+spaceA))) * Math.trunc(((columnv * feet) / (heightp+space+spaceA)));
+        console.log((widthp+space+spaceA));
+        console.log(newQuan);
         }
         if(unit == "M"){
-        var newQuan = (Math.trunc((Row * meter) / widthp)) * Math.trunc(((columnv * meter) / heightp));
+        var newQuan = (Math.trunc((Row * meter) / (widthp+space+spaceA))) * Math.trunc(((columnv * meter) / (heightp+space+spaceA)));
 
         }
         if(unit == "Cm"){
-          var newQuan = (Math.trunc((Row * centi) / widthp)) * Math.trunc(((columnv * centi) / heightp));
+          var newQuan = (Math.trunc((Row * centi) / (widthp+space+spaceA))) * Math.trunc(((columnv * centi) / (heightp+space+spaceA)));
 
         }
         if(unit=="Mm"){
-          var newQuan = (Math.trunc((Row * mil) / widthp)) * Math.trunc(((columnv * mil) / heightp));
+          var newQuan = (Math.trunc((Row * mil) / (widthp+space+spaceA))) * Math.trunc(((columnv * mil) / (heightp+space+spaceA)));
 
         }
         console.log(newQuan);
@@ -405,6 +437,18 @@
               console.log(Math.round(newQuan));
               reduceQuantity(Math.round(newQuan));
             }
+      }
+     
+      function rotate90(){
+        var a;
+        for(a=0;a<Quant1;a++){
+        var height = document.getElementById("layout").children[a].offsetHeight+"px";
+        var widthA = document.getElementById("layout").children[a].offsetWidth+"px";
+        console.log(height);
+        console.log(widthA);
+        document.getElementById("layout").children[a].style.width = height;
+        document.getElementById("layout").children[a].style.height = widthA;
+        }
       }
 
       function buildLayout(){
@@ -1297,10 +1341,10 @@
       }
     }
   }
-  document.getElementById('t_1').innerHTML = length;
-      document.getElementById('t_2').innerHTML = breath;
-      document.getElementById('t_3').innerHTML = Row;
-      document.getElementById('t_4').innerHTML = columnv;
+  document.getElementById('t_1').innerHTML = length+" "+unit;
+      document.getElementById('t_2').innerHTML = breath+" "+unit;
+      document.getElementById('t_3').innerHTML = Row+" "+unit;
+      document.getElementById('t_4').innerHTML = columnv+" "+unit;
       document.getElementById('t_5').innerHTML = name;
       
     </script>
@@ -1362,8 +1406,7 @@
       }
     </script>
     <script>
-      
-      
+     
       
     </script>
     <script>
