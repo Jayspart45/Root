@@ -18,7 +18,10 @@
   <body>
     <!--Header-->
     <header>
-      <img src="./assests/images/Roots_logo.png" alt="" />
+      <a href="./home.html">
+        <img src="./assests/images/Roots_logo.png" alt="" />
+
+      </a>
       <h1>
         Project name:
         <script>
@@ -46,38 +49,42 @@
   <div id="content" class="container">
   
   </div>
+
   <div class="container" 
   style="background-image:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('./assests/images/undraw_my_answer_re_k4dv.svg')";
   >
-    <label>Quantity given:</label>
-    <h1 id="t_6"></h1>
-    <label>Quantity can place:</label>
-    <h1 id="t_7"></h1>
+    <label>Quantity given:
+    <h2 id="t_6"></h2>
+
+    </label>
+    <label>Quantity can place:
+      <h2 id="t_7"></h2>
+
+    </label>
     <label>Length of Layout:
     
-    <h1 id="t_1"></h1>
+    <h2 id="t_1"></h2>
     
     </label>
     <label>Width of Layout:
-      <h1 id="t_2"></h1>
+      <h2 id="t_2"></h2>
     
     </label>
     
     <label>Length of Row:
-      <h1 id="t_3"></h1>
+      <h2 id="t_3"></h2>
     
     </label>
     
     <label>Length of Column:
-      <h1 id="t_4"></h1>
+      <h2 id="t_4"></h2>
     
     </label>
     
     <label>Project Name:
-      <h1 id="t_5">:</h1>
+      <h2 id="t_5">:</h2>
     
     </label>
-    
     
     </div>
 </section>
@@ -201,12 +208,26 @@
         onclick="rotate90()"
         >Rotate90</a
       >
-      <label>
-        Quantity:
-      <input type="number" id="quantA"  
-      oninput="setQuant()"
-      >
-      </label>
+      <a href="#layout"
+      class="btn"
+      onclick="removeQuant()"
+      style="margin: 20px 0 10px 0; background-color:rgb(255, 111, 0)"
+      type="button">Remove Quantity</a>
+      
+        <label>
+          Quantity:
+        <input type="number" id="quantA"  
+        >
+  
+        </label>
+        
+        <a href="#layout"
+        class="btn"
+        onclick="changeQuant()"
+        style="margin: 20px 0 10px 0; background-color:rgb(255, 111, 0)"
+        type="submit">Change Quantity</a>
+      
+    
      
       </section>
       
@@ -252,12 +273,20 @@
   
 
     <script>
-      function setQuant(){
-        let quantC = document.getElementById("quantA").value;
-        console.log(quantC);
-        localStorage.setItem("Quant1",quantC);
-       }
-   
+      function removeQuant(){
+      for(i=0;i<Quant1;i++){
+          var p =document.getElementById('layout');
+          document.getElementById('layout').children[i].style.display="none";
+      }
+}
+function changeQuant(){
+  var Quant2 =document.getElementById('quantA').value;
+  localStorage.setItem('Quant2',Quant2);
+  console.log(Quant2);
+
+  buildLayout2();
+}      
+
       var length = localStorage.getItem('length');
       var breath = localStorage.getItem('breath');
       var name = localStorage.getItem('name');
@@ -327,6 +356,9 @@
         var spaceA= spaceB * centi;
 
         console.log(space);
+        console.log(spaceA);
+        console.log(row);
+        console.log(col);
 
         }
         else if(unit== 'M'){
@@ -344,11 +376,11 @@
         let spaceY = spaceA+"px";
         let spaceZ = spaceA+"px";
         console.log(spaceX);
-        document.getElementById("layout").style.gap=spaceX;
-        document.getElementById("layout").style.paddingLeft=spaceY;
-        document.getElementById("layout").style.paddingTop=spaceZ;
+    
 
       function Calculate() {
+        document.getElementById("layout").style.gap=spaceX;
+        document.getElementById("layout").style.padding=spaceY;
         document.getElementById('layout').style.height = col;
         document.getElementById('layout').style.width = row;
         document.getElementById('area').style.height = len;
@@ -411,25 +443,30 @@
         console.log("area:"+ pArea);
         var reqArea = pArea*(parseInt(quant));
         console.log("ReqArea:"+reqArea);*/
-        if (unit == "feet"){
-        var newQuan = (Math.trunc((Row * feet) / (widthp+space+spaceA))) * Math.trunc(((columnv * feet) / (heightp+space+spaceA)));
-        console.log((widthp+space+spaceA));
-        console.log(newQuan);
-        }
+          if (unit == "feet"){
+            var newQuan = Math.trunc(((Row * feet)-(spaceA*2)) / (widthp+space)) * Math.trunc(((columnv * feet)-(spaceA*2)) / (heightp+space));
+            localStorage.setItem("Quant1",newQuan);
+          }
+       
+
+      
         if(unit == "M"){
-        var newQuan = (Math.trunc((Row * meter) / (widthp+space+spaceA))) * Math.trunc(((columnv * meter) / (heightp+space+spaceA)));
+        var newQuan = Math.trunc(((Row * meter)-(spaceA*2)) / (widthp+space)) * Math.trunc(((columnv * meter)-(spaceA*2)) / (heightp+space));
+        localStorage.setItem("Quant1",newQuan);
 
         }
         if(unit == "Cm"){
-          var newQuan = (Math.trunc((Row * centi) / (widthp+space+spaceA))) * Math.trunc(((columnv * centi) / (heightp+space+spaceA)));
+          var newQuan = Math.trunc(((Row * centi)-(spaceA*2)) / (widthp+space)) * Math.trunc(((columnv * centi)-(spaceA*2)) / (heightp+space));
+          localStorage.setItem("Quant1",newQuan);
+
 
         }
         if(unit=="Mm"){
-          var newQuan = (Math.trunc((Row * mil) / (widthp+space+spaceA))) * Math.trunc(((columnv * mil) / (heightp+space+spaceA)));
+          var newQuan = Math.trunc(((Row * mil)-(spaceA*2)) / (widthp+space)) * Math.trunc(((columnv * mil)-(spaceA*2)) / (heightp+space));
+          localStorage.setItem("Quant1",newQuan);
 
         }
-        console.log(newQuan);
-        localStorage.setItem('Quant1',Math.round(newQuan));
+        
        
         if(parseInt(quant) <= newQuan){
               buildLayout()
@@ -451,8 +488,8 @@
         }
       }
 
-      function buildLayout(){
-        if(id== "p_1"){
+     function buildLayout(){
+         if(id== "p_1"){
         for (let i=0;i<quant;i++){
           var p = document.getElementById("p_1");
          var l = document.getElementById("layout")
@@ -1349,9 +1386,7 @@
       
     </script>
  
-      <script>
-          
-      </script>
+     
 
     <script>
      
@@ -1481,9 +1516,14 @@
       
       };
       if (id == "p_1"){
-        var content = "Details!"+"<br><br>"
+  var content = 
+  "<p>If any Glitches,please reload the page!</p>"
++
+  "<h1>Details!</h1>"
         for(var key in myProducts.p_1){
           content +=key +' : '+myProducts.p_1[key]+"<br><br>"
+
+
         }
         content+=""
 
@@ -1491,79 +1531,109 @@
           }
       
       if (id == "p_2"){
-        var content = "Details!"+"<br><br>"
-for(var key in myProducts.p_2){
-  content += key +' :'+myProducts.p_2[key]+"<br><br>"
-}
-content+=""
+ 
+        var content = 
+  "<p>If any Glitches,please reload the page!</p>"
+        +
+        "<h1>Details!</h1>"
+        for(var key in myProducts.p_2){
+        content += key +' :'+myProducts.p_2[key]+"<br><br>"
+        }
+        content+=""
         document.getElementById("content").innerHTML=content;
           }
-            if (id == "p_3"){
-              var content = "<h1>Details! </h1>"+"<br><br>"
+      if (id == "p_3"){
+              var content = 
+  "<p>If any Glitches,please reload the page!</p>"
+              +
+              "<h1>Details! </h1>"
               for(var key in myProducts.p_3){
                 content += key +' :'+myProducts.p_3[key]+"<br><br>"
               }
               content+=""
+
               document.getElementById("content").innerHTML=content;
                 }
-              if (id == "p_4"){
-                var content = "Details! "+"<br><br>"
+      if (id == "p_4"){
+  var content = 
+  "<p>If any Glitches,please reload the page!</p>"
+  +
+  "<h1>Details!</h1> "
                 for(var key in myProducts.p_4){
                   content += key +' :'+myProducts.p_4[key]+"<br><br>"
                 }
+
                 content+=""
+
                 document.getElementById("content").innerHTML=content;
                   }
-               if (id == "p_5"){
-                var content = "Details! "+"<br><br>"
+      if (id == "p_5"){
+                var content = 
+  "<p>If any Glitches,please reload the page!</p>"
+                +
+                "<h1>Details!</h1> "
         for(var key in myProducts.p_5){
           content += key +' :'+myProducts.p_5[key]+"<br><br>"
         }
         content+=""
         document.getElementById("content").innerHTML=content;
           }
-                 if (id == "p_6"){
-                  var content = "Details! "+"<br><br>"
+      if (id == "p_6"){
+                  var content = 
+  "<p>If any Glitches,please reload the page!</p>"
+  +"<h1>Details!</h1> "
                   for(var key in myProducts.p_6){
                     content += key +' :'+myProducts.p_6[key]+"<br><br>"
                   }
                   content+=""
                   document.getElementById("content").innerHTML=content;
                     }
-                    if (id == "p_7"){
-                      var content = "Details! "+"<br><br>"
+      if (id == "p_7"){
+   
+        var content =
+  "<p>If any Glitches,please reload the page!</p>"
+  +"<h1>Details!</h1> "
                       for(var key in myProducts.p_7){
                         content += key +' :'+myProducts.p_7[key]+"<br><br>"
                       }
                       content+=""
                       document.getElementById("content").innerHTML=content;
                         }
-                      if (id == "p_8"){
-                        var content = "Details! "+"<br><br>"
+      if (id == "p_8"){
+                        var content =
+  "<p>If any Glitches,please reload the page!</p>"
+  +"<h1>Details!</h1> "
                         for(var key in myProducts.p_8){
                           content += key +' :'+myProducts.p_8[key]+"<br><br>"
                         }
                         content+=""
                         document.getElementById("content").innerHTML=content;
                           }
-                        if (id == "p_9"){
-                          var content = "Details! "+"<br><br>"
+      if (id == "p_9"){
+                          var content = 
+  "<p>If any Glitches,please reload the page!</p>"
+                          +
+                          "<h1>Details!</h1> "
                           for(var key in myProducts.p_9){
                             content += key +' :'+myProducts.p_9[key]+"<br><br>"
                           }
                           content+=""
                           document.getElementById("content").innerHTML=content;
                             }
-                          if (id == "p_10"){
-                            var content = "Details! "+"<br><br>"
+      if (id == "p_10"){
+                            var content =
+  "<p>If any Glitches,please reload the page!</p>"
+  +"<h1>Details!</h1> "
                             for(var key in myProducts.p_10){
                               content += key +' :'+myProducts.p_10[key]+"<br><br>"
                             }
                             content+=""
                             document.getElementById("content").innerHTML=content;
                               } 
-                           if (id == "p_11"){
-                            var content = "Details! "+"<br><br>"
+      if (id == "p_11"){
+                            var content =
+  "<p>If any Glitches,please reload the page!</p>"
+  +"<h1>Details!</h1> "
                             for(var key in myProducts.p_11){
                               content += key +' :'+myProducts.p_11[key]+"<br><br>"
                             }
@@ -1572,6 +1642,164 @@ content+=""
                               } 
                             
     </script>
+    <script>
+      function buildLayout2(){
+  var Quant2 =document.getElementById('quantA').value;
+        if(id== "p_1"){
+       for (let i=0;i<Quant2;i++){
+         var p = document.getElementById("p_1");
+        var l = document.getElementById("layout")
+                  var cln =  p.cloneNode(true);
+                  document.getElementById('layout').appendChild(cln); 
+       }
+
+
+        
+       for(let j=0; j<Quant2;j++){
+         document.getElementById("layout").children[j].style.display="inline";
+       }
+     }
+       if (id == "p_2"){
+
+         for (let i=0;i<Quant2;i++){
+           var p = document.getElementById("p_2");
+          var l = document.getElementById("layout")
+                    var cln =  p.cloneNode(true);
+                    document.getElementById('layout').appendChild(cln); 
+         }
+
+ 
+          
+         for(let j=0; j<Quant2;j++){
+           document.getElementById("layout").children[j].style.display="inline";
+         }
+       }
+       if (id == "p_3"){
+
+         for (let i=0;i<Quant2;i++){
+           var p = document.getElementById("p_3");
+          var l = document.getElementById("layout")
+          console.log("running")
+                    var cln =  p.cloneNode(true);
+                    document.getElementById('layout').appendChild(cln); 
+         }
+     
+ 
+          
+         for(let j=0; j<Quant2;j++){
+           document.getElementById("layout").children[j].style.display="inline-block";
+         }
+       }
+       if(id== "p_4"){
+         for (let i=0;i<Quant2;i++){
+           var p = document.getElementById("p_4");
+          var l = document.getElementById("layout")
+                    var cln =  p.cloneNode(true);
+                    document.getElementById('layout').appendChild(cln); 
+         }
     
+ 
+          
+         for(let j=0; j<Quant2;j++){
+           document.getElementById("layout").children[j].style.display="inline";
+         }
+       }
+       if(id== "p_5"){
+         for (let i=0;i<Quant2;i++){
+           var p = document.getElementById("p_5");
+          var l = document.getElementById("layout")
+                    var cln =  p.cloneNode(true);
+                    document.getElementById('layout').appendChild(cln); 
+         }
+
+ 
+          
+         for(let j=0; j<Quant2;j++){
+           document.getElementById("layout").children[j].style.display="inline";
+         }
+       }
+       if(id== "p_6"){
+         for (let i=0;i<Quant2;i++){
+           var p = document.getElementById("p_6");
+          var l = document.getElementById("layout")
+                    var cln =  p.cloneNode(true);
+                    document.getElementById('layout').appendChild(cln); 
+         }
+         
+          
+         for(let j=0; j<Quant2;j++){
+           document.getElementById("layout").children[j].style.display="inline";
+         }
+       }
+       if(id== "p_7"){
+         for (let i=0;i<Quant2;i++){
+           var p = document.getElementById("p_7");
+          var l = document.getElementById("layout")
+                    var cln =  p.cloneNode(true);
+                    document.getElementById('layout').appendChild(cln); 
+         }
+
+          
+         for(let j=0; j<Quant2;j++){
+           document.getElementById("layout").children[j].style.display="inline";
+         }
+       }
+       if(id== "p_8"){
+         for (let i=0;i<Quant2;i++){
+           var p = document.getElementById("p_8");
+          var l = document.getElementById("layout")
+                    var cln =  p.cloneNode(true);
+                    document.getElementById('layout').appendChild(cln); 
+         }
+   
+ 
+          
+         for(let j=0; j<Quant2;j++){
+           document.getElementById("layout").children[j].style.display="inline";
+         }
+       }
+       if(id== "p_9"){
+         for (let i=0;i<Quant2;i++){
+           var p = document.getElementById("p_9");
+          var l = document.getElementById("layout")
+                    var cln =  p.cloneNode(true);
+                    document.getElementById('layout').appendChild(cln); 
+         }
+       
+ 
+          
+         for(let j=0; j<Quant2;j++){
+           document.getElementById("layout").children[j].style.display="inline";
+         }
+       }
+       if(id== "p_10"){
+         for (let i=0;i<Quant2;i++){
+           var p = document.getElementById("p_10");
+          var l = document.getElementById("layout")
+                    var cln =  p.cloneNode(true);
+                    document.getElementById('layout').appendChild(cln); 
+         }
+    
+          
+         for(let j=0; j<Quant2;j++){
+           document.getElementById("layout").children[j].style.display="inline";
+         }
+       }
+       if(id== "p_11"){
+         for (let i=0;i<Quant2;i++){
+           var p = document.getElementById("p_11");
+          var l = document.getElementById("layout")
+                    var cln =  p.cloneNode(true);
+                    document.getElementById('layout').appendChild(cln); 
+         }
+        
+ 
+          
+         for(let j=0; j<Quant2;j++){
+           document.getElementById("layout").children[j].style.display="inline";
+         }
+       }
+     }
+    </script>
   </body>
 </html>
