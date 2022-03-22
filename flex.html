@@ -214,7 +214,7 @@
       style="margin: 20px 0 10px 0; background-color:rgb(255, 111, 0)"
       type="button">Remove Quantity</a>
       
-        <label>
+        <label style="color: black;">
           Quantity:
         <input type="number" id="quantA"  
         >
@@ -282,6 +282,8 @@
 function changeQuant(){
   var Quant2 =document.getElementById('quantA').value;
   localStorage.setItem('Quant2',Quant2);
+  localStorage.setItem('quant',Quant2);
+
   console.log(Quant2);
 
   buildLayout2();
